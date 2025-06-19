@@ -55,13 +55,13 @@ canvas.create_window((0, 0), window=frame_canciones, anchor="nw")
 frame_canciones.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
 
 # Vista canción sonando
-frame_reproduciendo = tk.Frame(root, bg="#e3e1e1", height=50)
+frame_reproduciendo = tk.Frame(root, bg="#edecec", height=50)
 frame_reproduciendo.pack_forget()
 
-lbl_repro_img = tk.Label(frame_reproduciendo, bg="#e3e1e1")
+lbl_repro_img = tk.Label(frame_reproduciendo, bg="#edecec")
 lbl_repro_img.pack(side="left", padx=10)
 
-lbl_repro_titulo = tk.Label(frame_reproduciendo, text="", bg="#e3e1e1", font=("Arial", 10))
+lbl_repro_titulo = tk.Label(frame_reproduciendo, text="", bg="#edecec", font=("Arial", 10))
 lbl_repro_titulo.pack(side="left")
 
 # Controles 
@@ -161,7 +161,7 @@ def biblioteca():
         messagebox.showerror("Error", f"No se pudo leer el archivo:\n{e}")
 
 btn_cargar = tk.Button(root, text="Biblioteca", font=("Arial", 12),
-    command=biblioteca, bg="#f0f0f0", fg="black")
+    command=biblioteca, bg="#d9d9d9", fg="black")
 btn_cargar.pack(pady=(450, 20))
 
 root.mainloop()
