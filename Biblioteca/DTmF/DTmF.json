@@ -1,0 +1,92 @@
+{
+	"album": "DeBÍ TiRAR MáS FOToS",
+	"artista": "Bad Bunny",
+	"portada": "portada.jpg",
+	"canciones": [
+		{
+			"titulo": "NUEVAYoL",
+			"duracion": "3:04",
+			"archivo": "NUEVAYoL.mp3"
+		},
+		{
+			"titulo": "VOY A LLeVARTE PA PR",
+			"duracion": "2:36",
+			"archivo": "VOY A LLeVARTE PA PR.mp3"
+		},
+		{
+			"titulo": "BAILE INoLVIDABLE",
+			"duracion": "6:08",
+			"archivo": "BAILE INoLVIDABLE.mp3"
+		},
+		{
+			"titulo": "PERFuMITO NUEVO",
+			"duracion": "3:21",
+			"archivo": "PERFuMITO NUEVO.mp3"
+		},
+		{
+			"titulo": "WELTiTA",
+			"duracion": "3:08",
+			"archivo": "WELTiTA.mp3"
+		},
+		{
+			"titulo": "VeLDÁ",
+			"duracion": "3:55",
+			"archivo": "VeLDÁ.mp3"
+		},
+		{
+			"titulo": "EL CLúB",
+			"duracion": "3:43",
+			"archivo": "EL CLúB.mp3"
+		},
+		{
+			"titulo": "KETU TeCRÉ",
+			"duracion": "4:11",
+			"archivo": "KETU TeCRÉ.mp3"
+		},
+		{
+			"titulo": "BOKeTE",
+			"duracion": "3:36",
+			"archivo": "BOKeTE.mp3"
+		},
+		{
+			"titulo": "KLOuFRENS",
+			"duracion": "3:19",
+			"archivo": "KLOuFRENS.mp3"
+		},
+		{
+			"titulo": "TURiSTA",
+			"duracion": "3:10",
+			"archivo": "TURiSTA.mp3"
+		},
+		{
+			"titulo": "CAFé CON RON",
+			"duracion": "3:49",
+			"archivo": "CAFé CON RON.mp3"
+		},
+		{
+			"titulo": "PIToRRO DE COCO",
+			"duracion": "3:27",
+			"archivo": "PIToRRO DE COCO.mp3"
+		},
+		{
+			"titulo": "LO QUE LE PASÓ A HAWAii",
+			"duracion": "3:49",
+			"archivo": "LO QUE LE PASÓ A HAWAii.mp3"
+		},
+		{
+			"titulo": "EoO",
+			"duracion": "3:25",
+			"archivo": "EoO.mp3"
+		},
+		{
+			"titulo": "DtMF",
+			"duracion": "3:57",
+			"archivo": "DtMF.mp3"
+		},
+		{
+			"titulo": "LA MuDANZA",
+			"duracion": "3:33",
+			"archivo": "LA MuDANZA.mp3"
+		}
+	]
+}
