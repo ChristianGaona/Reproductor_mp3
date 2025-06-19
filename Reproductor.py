@@ -89,9 +89,16 @@ def reproducir():
             if portada_mini:
                 lbl_repro_img.config(image=portada_mini)
                 lbl_repro_img.image = portada_mini
+            fin_cancion()
         except Exception as e:
             messagebox.showerror("Error", f"No se pudo reproducir:\n{e}")
 
+def fin_cancion():
+    if not pygame.mixer.music.get_busy():
+        cambiar_cancion(1)
+    else:
+        root.after(1000, fin_cancion)
+        
 def detener():
     pygame.mixer.music.stop()
     lbl_repro_titulo.config(text="")
