@@ -14,12 +14,13 @@ pygame.mixer.init()
 lista_canciones = []
 indice_actual = 0
 portada_mini = None
-detenido_manualmente = False  # <-- NUEVA VARIABLE
+detenido_manualmente = False
+etiquetas_canciones = []
 
 # Funciones
 def reproducir():
     global detenido_manualmente
-    detenido_manualmente = False  # Resetear bandera
+    detenido_manualmente = False
     if lista_canciones:
         try:
             pygame.mixer.music.load(lista_canciones[indice_actual])
@@ -28,9 +29,16 @@ def reproducir():
             if portada_mini:
                 lbl_repro_img.config(image=portada_mini)
                 lbl_repro_img.image = portada_mini
+            frame_reproduciendo.pack(after=canvas_frame, fill="x")
+            resaltar_cancion_actual()
             fin_cancion()
         except Exception as e:
             messagebox.showerror("Error", f"No se pudo reproducir:\n{e}")
+
+def resaltar_cancion_actual():
+    for i, lbl in enumerate(etiquetas_canciones):
+        color = "#FF2A3C" if i == indice_actual else "white"
+        lbl.config(fg=color)
 
 def fin_cancion():
     if not pygame.mixer.music.get_busy() and not detenido_manualmente:
@@ -40,10 +48,12 @@ def fin_cancion():
 
 def detener():
     global detenido_manualmente
-    detenido_manualmente = True  # Activar bandera
+    detenido_manualmente = True
     pygame.mixer.music.stop()
     lbl_repro_titulo.config(text="")
     lbl_repro_img.config(image="")
+    resaltar_cancion_actual()
+    frame_reproduciendo.pack_forget()
 
 def cambiar_cancion(direccion):
     global indice_actual
@@ -52,7 +62,7 @@ def cambiar_cancion(direccion):
         reproducir()
 
 def biblioteca():
-    global lista_canciones, indice_actual, portada_mini
+    global lista_canciones, indice_actual, portada_mini, etiquetas_canciones
     ruta = filedialog.askopenfilename(title="Selecciona el álbum (JSON)", filetypes=[("Archivos JSON", ".json")])
     if not ruta:
         return
@@ -79,6 +89,7 @@ def biblioteca():
 
         for widget in frame_canciones.winfo_children():
             widget.destroy()
+        etiquetas_canciones.clear()
 
         lista_canciones = [os.path.join(carpeta, c["archivo"]) for c in datos["canciones"]]
         indice_actual = 0
@@ -91,11 +102,21 @@ def biblioteca():
             lbl_mini = tk.Label(fila, image=portada_mini, bg="#232324")
             lbl_mini.image = portada_mini
             lbl_mini.pack(side="left", padx=(0, 5))
-            tk.Label(fila, text=f"{cancion['titulo']} ({cancion['duracion']})", font=("Arial", 10), bg="#232324", fg="white", anchor="w").pack(side="left")
+
+            lbl_nombre = tk.Label(
+                fila,
+                text=f"{cancion['titulo']} ({cancion['duracion']})",
+                font=("Arial", 10),
+                bg="#232324",
+                fg="white",
+                anchor="w"
+            )
+            lbl_nombre.pack(side="left")
+            etiquetas_canciones.append(lbl_nombre)
 
         btn_cargar.pack_forget()
-        frame_reproduciendo.pack(after=canvas_frame, fill="x")
-        frame_inferior.pack(side="bottom", fill="x", pady=5)
+        frame_reproduciendo.pack_forget()
+        frame_inferior.pack(side="bottom", fill="x", pady=25)
 
     except Exception as e:
         messagebox.showerror("Error", f"No se pudo leer el archivo:\n{e}")
@@ -103,7 +124,7 @@ def biblioteca():
 # Ventana
 root = tk.Tk()
 root.title("Reproductor")
-root.geometry("400x700")
+root.geometry("400x650")
 root.configure(bg="#1c1c1e")
 
 # Parte superior
@@ -123,7 +144,7 @@ btn_reproducir = tk.Button(frame_arriba, text="▶ Reproducir", font=("Arial", 1
 btn_reproducir.pack_forget()
 
 # Lista de canciones
-canvas_frame = tk.Frame(root, bg="#1c1c1e", height=280)
+canvas_frame = tk.Frame(root, bg="#1c1c1e", height=230)
 canvas_frame.pack_propagate(False)
 
 # Scrollbar oscuro
